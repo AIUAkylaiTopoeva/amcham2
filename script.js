@@ -5,20 +5,21 @@ const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 let currentStep = 0;
 
-// Функция обновления шагов
 function updateFormSteps() {
     formSteps.forEach((step, index) => {
-        step.classList.toggle("active", index === currentStep);
+        step.style.display = index === currentStep ? "block" : "none"; // Показываем только текущий шаг
     });
 
     steps.forEach((step, index) => {
         step.classList.toggle("active", index <= currentStep);
     });
 
-    progressBar.style.width = `${(currentStep / (steps.length - 1)) * 100}%`;
+    progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`; // +1 исправляет баг с последним шагом
 
     prevBtn.disabled = currentStep === 0;
-    nextBtn.textContent = currentStep === steps.length - 1 ? translations[currentLang]["submit"] : translations[currentLang]["next"];
+    nextBtn.textContent = currentStep === steps.length - 1 
+        ? translations[currentLang]["submit"] 
+        : translations[currentLang]["next"];
 }
 
 
@@ -69,9 +70,16 @@ let currentLang = "ru";
 let translations = {};
 
 function changeLanguage(lang) {
-    fetch(`translations/${lang}.json`)
-        .then(response => response.json())
+    console.log(`Загружаем язык: ${lang}`); // Проверка языка в консоли
+    fetch(`${lang}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка загрузки: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log("Переводы загружены:", data); // Выведем полученные переводы
             translations = data;
             currentLang = lang;
 
@@ -82,9 +90,7 @@ function changeLanguage(lang) {
                 }
             });
 
-            if (Object.keys(translations).length > 0) {
-                updateFormSteps();
-            }
+            updateFormSteps(); // Чтобы обновить кнопки
         })
         .catch(error => console.error("Ошибка загрузки перевода:", error));
 }
@@ -130,11 +136,6 @@ window.addEventListener("scroll", function () {
 
 function toggleLanguageDropdown() {
     document.getElementById("languageDropdown").classList.toggle("show");
-}
-
-function changeLanguage(lang) {
-    alert("Выбран язык: " + lang);
-    document.getElementById("languageDropdown").classList.remove("show");
 }
 
 window.onclick = function (event) {
