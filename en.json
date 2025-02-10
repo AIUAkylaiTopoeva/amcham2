@@ -1,0 +1,80 @@
+{
+    "navbar": {
+        "title": "AmCham Membership Application"
+    },
+    "step1": {
+        "title": "Step 1. Information about company"
+    },
+    "step2": {
+        "title": "Step 2. Company Leadership "
+    },
+    "step3": {
+        "title": "Step 3. AmCham mailing subscription (Distribution Information)"
+    },
+    "step4": {
+        "title": "Step 4. Selection of Membership Type "
+    },
+    "label": {
+        "companyName": "Full Company Name as indicated in the official register of legal entities of the Ministry of justice of the Kyrgyz Republic, indcluding the organizational and legal form",
+        "foreignParticipation": "Is there foreign participation in the company, direct or indirect? Indirect means: the presence of foreign capital in the company, a franchise and other connections with foreign participation. If there is foreign participation, please indicate the country:",
+        "address": "Address of company:",
+        "foundingDate": "Date of company establishment:",
+        "industry": "What industry is your company in?",
+        "registrationData": "Indicate the registration details of your company ",
+        "registrationDate": "Registration date:",
+        "registrationNumber": "Registration number:",
+        "okpo": "OKPO code: ",
+        "inn": "Taxpayer Identification Number::",
+        "companyEmail": "Company Email:",
+        "companyPhone": "Company Phone Number:",
+        "website": "Link to company website:",
+        "companyDetails": "Detailed information about the company’s activities in Kyrgyzstan ",
+        "ceoName": "Full Name of the Head of the Company: ",
+        "position": "Position:",
+        "ceoEmail": "Email:",
+        "phone": "Phone:",
+        "vceoName": "Full Name of the Deputy Head of the Company:",
+        "vposition": "Position:",
+        "beneficiaries":"Information about the beneficial owners of your company (ultimate owners, ownership of more than 25% of shares in your company)",
+        "beneficiary1":"Full name:",
+        "beneficiary2":"Full name:",
+        "beneficiary3":"Full name:",
+        "beneficiary4":"Full name:",
+        "beneficiary5":"Full name:",
+        "beneficiary6":"Full name:",
+        "trustedName":"Name of employees to be listed on AmCham mailing subscription (up to 3 individuals):",
+        "trustedEmail":"Positions of person for mailing subscription (аs listed above):",
+        "trustedPhone":"Emails and Phone Numbers for Individuals listed above:",
+        "membership":"Please select the membership category most appropriate for your company:",
+        "consent":"I give my consent to the processing of my personal data",
+        "applicationDate":"Application Submission Date:",
+        "logoUpload":"Please provide your logo (pdf, png, svg, cdr, ai)"
+    },
+    "placeholder": {
+        "companyType": "LLC, OJSC, CJSC, etc",
+        "address": "",
+        "industry": "",
+        "registration": "number, date, registration authority, OKPO code, INN",
+        "okpo": "",
+        "inn": "",
+        "email": "",
+        "phone": "",
+        "website": "",
+        "fullname": "",
+        "position": ""
+    },
+    "option": {
+        "platinum":"Platinum (175,000 KGS)",
+        "gold":"Gold (100,000 KGS)",
+        "silver":"Silver (75,000 KGS)",
+        "nonprofit":"Non-profit (50,000 KGS)"
+    },
+    "button": {
+        "prev":"Previus",
+        "next":"Next"
+    },
+    "description": {
+        "membership":"AmCham recommends that companies with a higher annual revenue select higher categories.",
+        "note":"Note: The information provided by you will be used for internal purposes only and will not be disclosed."
+    }
+}

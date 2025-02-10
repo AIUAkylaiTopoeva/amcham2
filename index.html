@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма заявки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="header">
+        <!-- <div id="logob">
+          <img src="img/logo.jpeg" alt="Logo">
+        </div> -->
+        <div class="language-selector">
+            <ul id="languageDropdown" class="hidden">
+                <li><a href="#" onclick="changeLanguage('ru')"> Русский</a> </li>
+                <li><a href="#" onclick="changeLanguage('en')"> English</a> </li>
+                <li><a href="#" onclick="changeLanguage('kg')"> Кыргыз тили</a> </li>
+            </ul>
+        </div>
+    
+      </div>
+
+      <nav class="navbar" data-i18n="navbar.title">
+        Форма заявки на вступление в Американскую торговую палату
+    </nav>
+    
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="step active">1</div>
+            <div class="step">2</div>
+            <div class="step">3</div>
+            <div class="step">4</div>
+        </div>
+    
+        <form id="multiStepForm">
+            <div class="form-step active">
+                <h2 data-i18n="step1.title">Шаг 1: Основная информация о компании</h2><br><br>
+    
+                <label for="companyName" data-i18n="label.companyName"></label>
+                <input type="text" id="companyName" placeholder="ОсОО, ЗАО, ОАО и т.д." data-i18n-placeholder="placeholder.companyType">
+    
+                <label for="foreignParticipation" data-i18n="label.foreignParticipation">Имеется ли иностранное участие...</label>
+                <input type="text" id="foreignParticipation">
+    
+                <label for="address" data-i18n="label.address">Адрес:</label>
+                <input type="text" id="address" placeholder="Введите адрес" data-i18n-placeholder="placeholder.address">
+    
+                <label data-i18n="label.foundingDate">Дата основания компании:</label>
+                <input type="date"><br><br>
+    
+                <label data-i18n="label.industry">Сфера деятельности:</label>
+                <input type="text" placeholder="Введите сферу деятельности" data-i18n-placeholder="placeholder.industry"><br><br>
+    
+                <label data-i18n="label.registrationData">Укажите регистрационные данные...</label><br>
+                <input type="text" placeholder="номер, дата, орган регистрации..." data-i18n-placeholder="placeholder.registration"><br><br>
+    
+                <div class="inline-fields">
+                    <label data-i18n="label.registrationDate">Дата регистрации:</label>
+                    <input type="date">
+    
+                    <label data-i18n="label.registrationNumber">Регистрационный номер:</label>
+                    <input type="text">
+                </div>
+    
+                <div class="inline-fields">
+                    <label data-i18n="label.okpo">Код ОКПО:</label>
+                    <input type="text" placeholder="Введите код ОКПО" data-i18n-placeholder="placeholder.okpo">
+    
+                    <label data-i18n="label.inn">ИНН:</label>
+                    <input type="text" placeholder="Введите ИНН" data-i18n-placeholder="placeholder.inn">
+                </div>
+    
+                <div class="inline-fields">
+                    <label data-i18n="label.companyEmail">Электронная почта компании:</label>
+                    <input type="email" placeholder="Введите email" data-i18n-placeholder="placeholder.email">
+    
+                    <label data-i18n="label.companyPhone">Номер телефона компании:</label>
+                    <input type="tel" placeholder="Введите номер" data-i18n-placeholder="placeholder.phone">
+                </div>
+    
+                <label data-i18n="label.website">Ссылка на сайт компании:</label>
+                <input type="url" placeholder="Введите URL" data-i18n-placeholder="placeholder.website"><br><br>
+    
+                <label data-i18n="label.companyDetails">Детальная информация о деятельности компании</label>
+                <textarea rows="4"></textarea><br><br>
+            </div>
+    
+            <div class="form-step ">
+                <h2 data-i18n="step2.title">Шаг 2: Информация о руководстве</h2>
+    
+                <label for="ceoName" data-i18n="label.ceoName">Полное ФИО руководителя компании:</label>
+                <input type="text" id="ceoName" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+    
+                <label for="position" data-i18n="label.position">Должность:</label>
+                <input type="text" id="position" placeholder="Введите должность" data-i18n-placeholder="placeholder.position">
+    
+                <div class="inline-fields">
+                    <label for="ceoEmail" data-i18n="label.ceoEmail">Электронная почта:</label>
+                    <input type="email" id="ceoEmail" placeholder="Введите email" data-i18n-placeholder="placeholder.email">
+    
+    <label data-i18n="label.phone">Номер телефона:</label>
+                    <input type="tel" placeholder="Введите номер" data-i18n-placeholder="placeholder.phone">
+                </div>
+    
+                <label for="vceoName" data-i18n="label.vceoName">Ф.И.О. заместителя руководителя компании:</label>
+                <input type="text" id="vceoName" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+    
+                <label for="vposition" data-i18n="label.vposition">Должность:</label>
+                <input type="text" id="vposition" placeholder="Введите должность" data-i18n-placeholder="placeholder.position">
+                <div class="inline-fields">
+                    <label for="ceoEmail" data-i18n="label.ceoEmail">Электронная почта:</label>
+                    <input type="email" id="ceoEmail" placeholder="Введите email" data-i18n-placeholder="placeholder.email">
+                
+                    <label data-i18n="label.phone">Номер телефона:</label>
+                    <input type="tel" placeholder="Введите номер" data-i18n-placeholder="placeholder.phone">
+                </div><br><br>
+                
+                <h3 data-i18n="title.beneficiaries">Сведения о бенефициарных владельцах вашей компании</h3>
+                <p data-i18n="description.beneficiaries">(Конечные владельцы, размер владения более 25% долей в вашей организации)</p> <br><br>
+                
+                <label for="beneficiary1" data-i18n="label.beneficiary1">1. ФИО:</label>
+                <input type="text" id="beneficiary1" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <label for="beneficiary2" data-i18n="label.beneficiary2">2. ФИО:</label>
+                <input type="text" id="beneficiary2" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <label for="beneficiary3" data-i18n="label.beneficiary3">3. ФИО:</label>
+                <input type="text" id="beneficiary3" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <label for="beneficiary4" data-i18n="label.beneficiary4">4. ФИО:</label>
+                <input type="text" id="beneficiary4" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <label for="beneficiary5" data-i18n="label.beneficiary5">5. ФИО:</label>
+                <input type="text" id="beneficiary5" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <label for="beneficiary6" data-i18n="label.beneficiary6">6. ФИО:</label>
+                <input type="text" id="beneficiary6" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                <div class="form-step ">
+                    <h2 data-i18n="title.step3">Шаг 3: Информация для рассылки</h2>
+                    <label for="trustedName" data-i18n="label.trustedName">ФИО сотрудников Компании, которые будут указаны в подписке на рассылку AmCham (до 3 человек):</label>
+                    <input type="text" id="trustedName" placeholder="Введите ФИО" data-i18n-placeholder="placeholder.fullname">
+                
+                    <label for="trustedEmail" data-i18n="label.trustedEmail">Адреса электронной почты, перечисленных выше:</label>
+                    <input type="email" id="trustedEmail" placeholder="Введите email" data-i18n-placeholder="placeholder.email">
+                
+                    <label for="trustedPhone" data-i18n="label.trustedPhone">Номера телефонов лиц, перечисленных выше:</label>
+                    <input type="text" id="trustedPhone" placeholder="Введите номер телефона" data-i18n-placeholder="placeholder.phone">
+                </div>
+                
+                <div class="form-step ">
+                    <h2 data-i18n="title.step4">Шаг 4: Выбор категории членства</h2>
+                    <p data-i18n="description.membership">AmCham рекомендует компаниям с более высоким годовым доходом выбирать более высокие категории.</p><br><br>
+                
+                    <label data-i18n="label.membership">Пожалуйста, выберите категорию членства, наиболее подходящую для вашей компании:</label><br>
+                    <input type="radio" name="membership" value="platinum"> <span data-i18n="option.platinum">Платинум (175,000 сом)</span><br>
+                    <input type="radio" name="membership" value="gold"> <span data-i18n="option.gold">Голд (100,000 сом)</span><br>
+                    <input type="radio" name="membership" value="silver"> <span data-i18n="option.silver">Сильвер (75,000 сом)</span><br>
+                    <input type="radio" name="membership" value="nonprofit"> <span data-i18n="option.nonprofit">Некоммерческая (50,000 сом)</span><br><br>
+                
+                    <label for="consent">
+                        <input type="checkbox" id="consent" required>
+                        <span data-i18n="label.consent">Я даю свое согласие на обработку моих персональных данных</span>
+                    </label><br>
+                
+                    <label data-i18n="label.applicationDate">Дата заполнения заявки:</label>
+                    <input type="date">
+                
+                    <label for="logoUpload" data-i18n="label.logoUpload">Направьте нам ваш логотип (pdf, png, svg, cdr, ai) </label>
+                    <input type="file" id="logoUpload" accept="image/*">
+                    <h2 data-i18n="description.note">Примечание: Предоставленная Вами информация будет использоваться только для внутреннего использования и не подлежит разглашению.</h2>
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="prevBtn" disabled data-i18n="button.prev" onclick="nextPrev(-1)">Назад</button>
+                    <button type="button" id="nextBtn" data-i18n="button.next" onclick="nextPrev(1)">Далее</button>
+                </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    
+
+    <footer style="background-color: rgb(0, 51, 102); color: white; padding: 40px 0; text-align: center; margin-top: 50px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding: 0 20px;">
+            
+            <div style="flex: 1; min-width: 300px; text-align: left;">
+                <h3 style="margin-bottom: 15px;">Американская торговая палата в КР</h3>
+                <p style="font-size: 14px; line-height: 1.6;">
+                    Американская торговая палата в Кыргызской Республике (Палата) – ведущая международная бизнес-ассоциация, 
+                    которая стремится к созданию благоприятной и конкурентоспособной деловой среды в Кыргызстане.
+                </p>
+            </div>
+    
+            <div style="flex: 1; min-width: 300px; text-align: left;">
+                <h3 style="margin-bottom: 15px;">Контакты</h3>
+                <p style="font-size: 14px; line-height: 1.6;">
+                    Кыргызстан, г. Бишкек, ул. Абдрахманова 191, офис №119<br>
+                    Телефон: <a href="tel:+996312979845" style="color: white; text-decoration: none;">+996 (312) 979 845</a><br>
+                    Email: <a href="mailto:office@amcham.kg" style="color: white; text-decoration: none;">office@amcham.kg</a>
+                </p>
+            </div>
+    
+            <div style="flex: 1; min-width: 200px; text-align: left;">
+                <h3 style="margin-bottom: 15px;">Меню</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 5px;"><a href="/" style="color: white; text-decoration: none; transition: 0.3s;">Главная</a></li>
+                    <li style="margin-bottom: 5px;"><a href="/activities" style="color: white; text-decoration: none; transition: 0.3s;">Деятельность Палаты</a></li>
+                    <li><a href="/contact" style="color: white; text-decoration: none; transition: 0.3s;">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div style="margin-top: 30px; font-size: 12px; opacity: 0.8;">
+            © 2025 – <span id="currentYear"></span> American Chamber of Commerce in the Kyrgyz Republic
+        </div>
+    </footer>
+
+
+</html>
