@@ -95,6 +95,50 @@ document.getElementById("currentYear").textContent = new Date().getFullYear();
 
 
 document.getElementById("languageBtn").addEventListener("click", function() {
-    const dropdown = document.getElementById("languageDropdown");
-    dropdown.classList.toggle("visible");  // Переключаем видимость списка
+    document.getElementById("languageDropdown").classList.toggle("hidden");
 });
+document.getElementById('multiStepForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('https://127.0.0.1:5500', { 
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert('Форма успешно отправлена!');
+        } else {
+            alert('Ошибка при отправке формы');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Ошибка сети');
+    }
+});
+
+window.addEventListener("scroll", function () {
+    let header = document.querySelector("header");
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+function toggleLanguageDropdown() {
+    document.getElementById("languageDropdown").classList.toggle("show");
+}
+
+function changeLanguage(lang) {
+    alert("Выбран язык: " + lang);
+    document.getElementById("languageDropdown").classList.remove("show");
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches("#languageBtn")) {
+        document.getElementById("languageDropdown").classList.remove("show");
+    }
+};
