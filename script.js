@@ -7,21 +7,21 @@ let currentStep = 0;
 
 function updateFormSteps() {
     formSteps.forEach((step, index) => {
-        step.style.display = index === currentStep ? "block" : "none"; // Показываем только текущий шаг
+        step.classList.toggle("active", index === currentStep);
+        step.style.display = index === currentStep ? "block" : "none"; // Показываем текущий шаг
     });
 
     steps.forEach((step, index) => {
         step.classList.toggle("active", index <= currentStep);
     });
 
-    progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`; // +1 исправляет баг с последним шагом
+    progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
 
     prevBtn.disabled = currentStep === 0;
-    nextBtn.textContent = currentStep === steps.length - 1 
+    nextBtn.textContent = currentStep === formSteps.length - 1 
         ? translations[currentLang]["submit"] 
         : translations[currentLang]["next"];
 }
-
 
 function validateStep() {
     const inputs = formSteps[currentStep].querySelectorAll("input[required], textarea[required]");
@@ -66,36 +66,35 @@ steps.forEach((step, index) => {
     });
 });
 
-let currentLang = "ru";
-let translations = {};
+// let currentLang = "ru";
 
-function changeLanguage(lang) {
-    console.log(`Загружаем язык: ${lang}`); // Проверка языка в консоли
-    fetch(`${lang}.json`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Ошибка загрузки: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Переводы загружены:", data); // Выведем полученные переводы
-            translations = data;
-            currentLang = lang;
+// function changeLanguage(lang) {
+//     console.log(`Загружаем язык: ${lang}`); // Проверка языка в консоли
+//     fetch(`${lang}.json`)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error(`Ошибка загрузки: ${response.status}`);
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             console.log("Переводы загружены:", data); // Выведем полученные переводы
+//             translations = data;
+//             currentLang = lang;
 
-            document.querySelectorAll("[data-translate]").forEach(element => {
-                const key = element.getAttribute("data-translate");
-                if (translations[key]) {
-                    element.textContent = translations[key];
-                }
-            });
+//             document.querySelectorAll("[data-translate]").forEach(element => {
+//                 const key = element.getAttribute("data-translate");
+//                 if (translations[key]) {
+//                     element.textContent = translations[key];
+//                 }
+//             });
 
-            updateFormSteps(); // Чтобы обновить кнопки
-        })
-        .catch(error => console.error("Ошибка загрузки перевода:", error));
-}
+//             updateFormSteps(); // Чтобы обновить кнопки
+//         })
+//         .catch(error => console.error("Ошибка загрузки перевода:", error));
+// }
 
-changeLanguage(currentLang);
+// changeLanguage(currentLang);
 
 document.getElementById("currentYear").textContent = new Date().getFullYear();
 
@@ -143,3 +142,59 @@ window.onclick = function (event) {
         document.getElementById("languageDropdown").classList.remove("show");
     }
 };
+let currentLang = "ru";
+
+function changeLanguage(lang) {
+    fetch(`languages/${lang}.json`)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelectorAll("[data-i18n]").forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                if (data[key]) {
+                    element.textContent = data[key];
+                }
+            });
+            localStorage.setItem("selectedLang", lang); // Запоминаем язык
+            currentLang = lang;
+        })
+        .catch(error => console.error("Ошибка загрузки перевода:", error));
+}
+
+// Проверяем, какой язык был сохранён, иначе устанавливаем русский
+const savedLang = localStorage.getItem("selectedLang") || "ru";
+changeLanguage(savedLang);
+
+// Обработчик кликов по кнопкам смены языка
+document.querySelectorAll(".language-selector a").forEach(link => {
+    link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const selectedLang = this.getAttribute("data-lang"); // data-lang вместо onclick
+        changeLanguage(selectedLang);
+    });
+});
+
+function updateFormStep() {
+    formSteps.forEach((step, index) => {
+        step.style.display = index === currentStep ? "block" : "none"; 
+    });
+
+    steps.forEach((step, index) => {
+        step.classList.toggle("active", index <= currentStep);
+    });
+
+    progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+}
+
+// Обработчик кликов по шагам
+steps.forEach(step => {
+    step.addEventListener("click", function () {
+        const stepIndex = parseInt(this.getAttribute("data-step"), 10);
+        if (stepIndex <= currentStep) {
+            currentStep = stepIndex;
+            updateFormStep();
+        }
+    });
+});
+
+// Обновляем форму при загрузке
+updateFormStep();
